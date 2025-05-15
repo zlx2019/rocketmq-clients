@@ -1,0 +1,18 @@
+[package]
+name = "all"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = {version = "1", features = ["full"]}
+anyhow = "1.0.98"
+
+## RocketMq rust
+rocketmq-client-rust = "0.4.0"
+rocketmq-common = "0.4.0"
+rocketmq-rust = "0.4.0"
+
+
+tracing = "0.1.40"
+tracing-subscriber = "0.3.19"
+rocketmq-remoting = "0.4.0"

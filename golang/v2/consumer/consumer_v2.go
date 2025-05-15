@@ -18,8 +18,8 @@ import (
 
 const (
 	nameServer         = "118.145.206.25:9876"
-	ReCaptchaTaskTopic = "example-golang-topic" // 主题名
-	ReCaptchaTaskGroup = "example-golang-group" // 消费组
+	ReCaptchaTaskTopic = "example-golang-topic"          // 主题名
+	ReCaptchaTaskGroup = "example-golang-consumer-group" // 消费组
 )
 
 func main() {
