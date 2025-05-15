@@ -3,3 +3,5 @@
 assets
 .DS_Store
 Cargo.lock
+**/cmake-build-debug/
+**/bin/
