@@ -1,0 +1,10 @@
+[package]
+name = "v2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = {version = "1.45.0", features = ["full"]}
+
+rocketmq-rust = "0.4.0"
+rocketmq-error = "0.4.0"
