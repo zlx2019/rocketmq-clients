@@ -25,7 +25,7 @@ async fn main() -> anyhow::Result<()> {
         .build();
 
     // connect
-    producer.start().await.context("producer startup fail")?;
+    producer.start().await.with_context(|| "producer startup fail")?;
     // send messages
     for i in 0..10 {
         // create message
@@ -34,7 +34,7 @@ async fn main() -> anyhow::Result<()> {
         // message.set_keys();
         // message.set_tags();
         // message.set_properties();
-        let send_result = producer.send_with_timeout(message, 2000).await.context("message send fail");
+        let send_result = producer.send_with_timeout(message, 2000).await.with_context(|| "message send fail");
         println!("send {i} message: {:?}", send_result);
     }
     // shutdown

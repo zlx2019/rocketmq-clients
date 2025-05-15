@@ -3,6 +3,7 @@ use rocketmq_client_rust::consumer::default_mq_push_consumer::DefaultMQPushConsu
 use rocketmq_client_rust::consumer::listener::consume_concurrently_context::ConsumeConcurrentlyContext;
 use rocketmq_client_rust::consumer::listener::consume_concurrently_status::ConsumeConcurrentlyStatus;
 use rocketmq_client_rust::consumer::listener::message_listener_concurrently::MessageListenerConcurrently;
+use rocketmq_client_rust::consumer::message_selector::MessageSelector;
 use rocketmq_client_rust::consumer::mq_push_consumer::MQPushConsumer;
 use rocketmq_common::common::message::message_ext::MessageExt;
 use rocketmq_common::common::message::MessageTrait;
@@ -30,12 +31,15 @@ async fn main() -> anyhow::Result<()> {
         .message_model(MessageModel::Clustering) // 消息消费模式
         .build();
     // 订阅主题
-    consumer.subscribe(TOPIC, TAGS).context(format!("failed to subscribe to {}", TOPIC))?;
+    consumer.subscribe(TOPIC, TAGS).with_context(|| format!("failed to subscribe to {}", TOPIC))?;
+
+    // 使用SQl92
+    // consumer.subscribe_with_selector(TOPIC, Some(MessageSelector::by_sql("age is null")))?;
+
     // 注册消息处理器（并发消费）
     consumer.register_message_listener_concurrently(MessageListener);
     // 启动消费者
-    consumer.start().await.context(format!("failed to start consumer for {}", TOPIC))?;
-
+    consumer.start().await.with_context(|| format!("failed to start consumer for {}", TOPIC))?;
     info!("Consumer listen success");
     // wait
     let _ = tokio::signal::ctrl_c().await;
