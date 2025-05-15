@@ -12,7 +12,7 @@ import (
 
 const (
 	NameServer    = "118.145.206.25:9876"    // NameServer
-	Topic         = "example-client-golang"  // 主题
+	Topic         = "example-golang-topic"   // 主题
 	ProducerGroup = "default_producer_group" // 生产组
 )
 

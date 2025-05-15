@@ -60,7 +60,8 @@ func messageHandler(ctx context.Context, messages ...*primitive.MessageExt) (con
 			log.Println("consumer interrupted...")
 			return consumer.ConsumeRetryLater, ctx.Err()
 		default:
-			fmt.Printf("consume message: %s\n", string(msg.Body))
+			fmt.Println(string(msg.Body))
+			// fmt.Printf("consume message: %s\n", string(msg.Body))
 		}
 	}
 	return consumer.ConsumeSuccess, nil
