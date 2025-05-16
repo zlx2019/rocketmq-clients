@@ -10,7 +10,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 # RocketMQ 头文件路径
 include_directories(/usr/local/include/rocketmq)
 # RocketMQ 库路径
-link_directories(/usr/local/lib)
+link_directories(lib/arm64)
 
 # 编译所有源文件
 file(GLOB files "*.c*")
