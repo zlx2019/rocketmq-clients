@@ -7,6 +7,7 @@
 #include "CMessage.h"
 #include "CProducer.h"
 #include "CSendResult.h"
+#include "common.h"
 
 #include <stdio.h>
 #ifdef _WIN32
@@ -21,8 +22,7 @@
 const char *NAME_SRV = "118.145.206.25:9876";
 const char *TOPIC = "example_cpp_topic";
 const char *GROUP = "default_producer_group";
-// 线程阻塞
-void t_sleep(unsigned int milliseconds);
+
 void SendMessages(CProducer *producer, int count);
 
 /// RocketMQ 同步消息 生产者
@@ -74,16 +74,4 @@ void SendMessages(CProducer *producer, int count) {
 	}
 	// 释放消息
 	DestroyMessage(message);
-}
-
-
-
-
-// thread sleep
-void t_sleep(unsigned int milliseconds) {
-#ifdef _WIN32
-	Sleep(milliseconds);
-#else
-	usleep(milliseconds * 1000);
-#endif
 }
