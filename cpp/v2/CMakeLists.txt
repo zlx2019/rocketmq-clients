@@ -13,7 +13,7 @@ include_directories(/usr/local/include/rocketmq)
 link_directories(lib/arm64)
 
 # 编译所有源文件
-file(GLOB files "*.c*")
+file(GLOB files "src/*.c*")
 foreach(file ${files})
     get_filename_component(basename ${file} NAME_WE)
     # 创建可执行文件

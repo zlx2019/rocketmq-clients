@@ -1,8 +1,9 @@
-//
-// Created by Zero Bifang on 2025/5/16.
-//
+/* CSimpleProducer.c -- RocketMQ producer for C.
+ *	- SyncMessage
+ *	-
+ *
+ */
 
-// include RocketMQ
 #include "CCommon.h"
 #include "CMessage.h"
 #include "CProducer.h"
@@ -25,7 +26,8 @@ const char *GROUP = "default_producer_group";
 
 void SendMessages(CProducer *producer, int count);
 
-/// RocketMQ 同步消息 生产者
+// RocketMQ Producer by C语言版本
+//
 int main(int argc, char *argv[]) {
 	// 创建生产者
 	CProducer* producer = CreateProducer(GROUP);

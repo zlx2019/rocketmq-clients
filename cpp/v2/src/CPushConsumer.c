@@ -1,6 +1,7 @@
-//
-// Created by Zero on 2025/5/16.
-//
+/* CPushConsumer.c.c -- RocketMQ producer for C.
+ *	- PushConsumer
+ *
+ */
 
 #include <signal.h>
 #include <stdbool.h>
